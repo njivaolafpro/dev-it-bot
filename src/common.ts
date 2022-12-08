@@ -1,0 +1,17 @@
+
+const CHANNEL_IDS = {
+    ARRIVEE: '',
+    COMMUNAUTE: { GENERAL: '' }
+}
+
+
+const ROLES = {
+    NON_REGISTERED: '',
+    MEMBER: '',
+};
+
+const MAIN_MESSAGE = {
+    RULE_MESSAGE_ID: '1043488446796283915'
+}
+
+export { CHANNEL_IDS, ROLES, MAIN_MESSAGE }
