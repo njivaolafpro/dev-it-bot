@@ -5,7 +5,7 @@ import postReactInRules from '../repository/post-react-in-rules';
 
 let client:Discord.Client<boolean>;
 
-const handler = async (reaction: Discord.MessageReaction, user:Discord.User | Discord.PartialUser) => {
+const handler = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user:Discord.User | Discord.PartialUser) => {
     // When a reaction is received, check if the structure is partial
     if (reaction.partial) {
         // If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled

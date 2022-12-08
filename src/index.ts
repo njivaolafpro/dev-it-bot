@@ -43,3 +43,22 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // Log in to Discord with your client's token
 client.login(process.env.BOT_TOKEN);
+
+
+// ------------------------------ HANDLERS  ------------------------------------------------------
+
+// Dès qu'un nouveau membre rejoint le serveur,
+import * as guildMemberAdd from './handlers/guildMemberAdd';
+
+const guildMemberAddHandler = guildMemberAdd.build(client);
+
+client.on(Events.GuildMemberAdd, guildMemberAddHandler);
+
+
+// quand une réaction sur un message du serveur
+import * as  messageReactionAdd from './handlers/messageReactionAdd'
+
+const messageReactionAddHandler = messageReactionAdd.build(client);
+
+client.on(Events.MessageReactionAdd, messageReactionAddHandler);
+

@@ -1,13 +1,13 @@
 
 const CHANNEL_IDS = {
-    ARRIVEE: '',
-    COMMUNAUTE: { GENERAL: '' }
+    ARRIVEE: '1042067928427802644', // WELCOME
+    COMMUNAUTE: { GENERAL: '1042049125543321640' }
 }
 
 
 const ROLES = {
-    NON_REGISTERED: '',
-    MEMBER: '',
+    NON_REGISTERED: 'nouveau-membre🐣',
+    MEMBER: 'membre vérifié',
 };
 
 const MAIN_MESSAGE = {
