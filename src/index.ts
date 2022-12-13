@@ -1,12 +1,20 @@
 // Require the necessary discord.js classes
-import { Client, Events, Collection, GatewayIntentBits } from 'discord.js';
+import { Client, Events, Collection, GatewayIntentBits, Partials } from 'discord.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
 import getCommands from './commands';
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildMessageReactions,
+	] , partials: [Partials.Channel, Partials.Message, Partials.Reaction]
+});
 const commandCollection = new Collection();
 Object.assign(client, { commands: commandCollection });
 

@@ -8,7 +8,8 @@ const EMOJIS = {
 const POST_REACTION_DM_MESSAGE = `Merci d'avoir accepté les conditions d'accès au serveur.`;
 
 
-const postReactInRules = async (reaction: Discord.MessageReaction, user: Discord.User | Discord.PartialUser) => {
+const postReactInRules = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser) => {
+    console.log('post reacting in rules');
     if (user.bot) return;   // GUARD
     if (!reaction.message.guild) {
         return;

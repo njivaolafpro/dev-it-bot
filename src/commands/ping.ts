@@ -6,6 +6,6 @@ export default {
         .setDescription('une description ici!'),
 
     async execute(interaction: CommandInteraction) {
-        await interaction.reply('Salut je suis la première commande du Dev-It-Bot full typescript :) !');
+        await interaction.reply('Salut salut je suis la première commande du Dev-It-Bot full typescript :) !');
     }
 }
