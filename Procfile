@@ -1,1 +1,1 @@
-api: npm run build-and-start
+api: npm run start
