@@ -41,7 +41,7 @@ export default {
 
         const embed = new EmbedBuilder()
             .setColor("Green")
-            .setDescription(`Annonce de ${member}`)
+            // .setDescription(`Annonce de ${member}`)
             .addFields(
                 { name: "Titre", value: title },
                 { name: "Message", value: message },
