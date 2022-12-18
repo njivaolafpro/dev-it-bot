@@ -3,12 +3,9 @@
 Permission ID:
 - 1503507721270
 
-# Installation:
-brew tap heroku/brew && brew install heroku
-
-
 # Deployment:
-- ( in progress ) -> in sparkedhost
+Actually we are using Heroku for deployment ->
+- merge your changes to /main branch
+- deploy on: https://dashboard.heroku.com/apps/dev-it-out-bot-api/deploy/github
 
-# Url:
-domain -> https://dev-it-out-bot-api.herokuapp.com/
+( make sure to update environment variables on prod if you add any on local )

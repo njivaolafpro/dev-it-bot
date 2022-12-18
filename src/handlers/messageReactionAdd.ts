@@ -21,9 +21,7 @@ const handler = async (reaction: Discord.MessageReaction | Discord.PartialMessag
 
     console.log(`${reaction.message.author?.username}'s message gained a reaction!`);
 
-    const isReactionInRule = MAIN_MESSAGE.RULE_MESSAGE_ID === reaction.message.id;
-
-    if (isReactionInRule) {
+    if (reaction.message.id === MAIN_MESSAGE.RULE_MESSAGE_ID) {
         await postReactInRules(reaction, user);
         return;
     }
