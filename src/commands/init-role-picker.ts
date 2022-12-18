@@ -28,7 +28,7 @@ export default {
             .setColor("Green")
             .setDescription(`Système de role-picking`)
             .addFields(
-                { name: "Prenez vos rôles", value: message },
+                { name: "Hey hello les gars ;) Vous pouvez enfin prendre vos rôles ^^", value: message },
             );
 
         const sentMessage = await channel.send({ embeds: [embed] });
