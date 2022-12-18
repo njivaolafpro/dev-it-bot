@@ -1,8 +1,10 @@
 import announce from "./announce";
+import initRolePicker from "./init-role-picker";
 
 const getCommands = () => {
     return [
-        announce
+        announce,
+        initRolePicker
     ]
 }
 
