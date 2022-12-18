@@ -19,15 +19,10 @@ const handler = async (reaction: Discord.MessageReaction | Discord.PartialMessag
         }
     }
 
-    console.log(`${reaction.message.author?.username}'s message gained a reaction!`);
-
-    if (reaction.message.id === MAIN_MESSAGE.RULE_MESSAGE_ID) {
-        await postReactInRules(reaction, user);
-        return;
-    }
+    console.log(`${reaction.message.author?.username}'s message just lost a reaction!`);
 
     if (reaction.message.id === MAIN_MESSAGE.ROLE_PICKER_MESSAGE_ID){
-        await postReactInRolePicker(reaction, user, true);
+        await postReactInRolePicker(reaction, user, false);
         return;
     }
 

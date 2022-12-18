@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js';
 import { PICKABLE_ROLES } from "../common";
 
-const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser) => {
+const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser, isAddingRole: boolean) => {
     console.log('post reacting in rules');
     if (user.bot) return;   // GUARD
     if (!reaction.message.guild) {
@@ -24,13 +24,17 @@ const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord
         return;
     }
 
-    const newPickedRole = guild.roles.cache.find(r => r.name === foundPickedRole?.name);
+    const selectedRole = guild.roles.cache.find(r => r.name === foundPickedRole?.name);
 
-    if(!newPickedRole){
+    if(!selectedRole){
         console.warn('role is not found in cache');
         return;
     }
-    await guild.members.addRole({ user: member, role: newPickedRole })
+    if(isAddingRole){
+        await guild.members.addRole({ user: member, role: selectedRole })
+    } else {
+        await guild.members.removeRole({ user: member, role: selectedRole })
+    }
 }
 
 export default postReactInRolePicker;

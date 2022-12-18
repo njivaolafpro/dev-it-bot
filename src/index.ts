@@ -65,8 +65,10 @@ client.on(Events.GuildMemberAdd, guildMemberAddHandler);
 
 // quand une réaction sur un message du serveur
 import * as  messageReactionAdd from './handlers/messageReactionAdd'
+import * as  messageReactionRemove from './handlers/messageReactionRemove'
 
 const messageReactionAddHandler = messageReactionAdd.build(client);
+const messageReactionRemoveHandler = messageReactionRemove.build(client);
 
 client.on(Events.MessageReactionAdd, messageReactionAddHandler);
-
+client.on(Events.MessageReactionRemove, messageReactionRemoveHandler);
