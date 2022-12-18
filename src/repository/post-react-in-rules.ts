@@ -17,8 +17,8 @@ const postReactInRules = async (reaction: Discord.MessageReaction | Discord.Part
     const emojiName = reaction.emoji.name;
     console.log('reaction in RULES -> ', { emojiName });
     const guild = reaction.message.guild;
-    const roleMembre = guild.roles.cache.find(r => r.name === ROLES.MEMBER);
-    const roleNonRegister = guild?.roles.cache.find(r => r.name === ROLES.NON_REGISTERED);
+    const roleMembre = guild.roles.cache.find(r => r.name === ROLES.member.name);
+    const roleNonRegister = guild?.roles.cache.find(r => r.name === ROLES.nonRegistered.name);
 
     /* Get the member that reacted originally. */
     const member = await reaction.message.guild.members.fetch(user.id);

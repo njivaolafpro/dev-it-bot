@@ -1,6 +1,7 @@
 
 import * as Discord from 'discord.js';
 import { MAIN_MESSAGE } from '../common';
+import postReactInRolePicker from '../repository/post-react-in-role-picker';
 import postReactInRules from '../repository/post-react-in-rules';
 
 let client:Discord.Client<boolean>;
@@ -18,12 +19,17 @@ const handler = async (reaction: Discord.MessageReaction | Discord.PartialMessag
         }
     }
 
-    console.log(`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`);
+    console.log(`${reaction.message.author?.username}'s message gained a reaction!`);
 
     const isReactionInRule = MAIN_MESSAGE.RULE_MESSAGE_ID === reaction.message.id;
 
     if (isReactionInRule) {
         await postReactInRules(reaction, user);
+        return;
+    }
+
+    if (reaction.message.id === MAIN_MESSAGE.ROLE_PICKER_MESSAGE_ID){
+        await postReactInRolePicker(reaction, user);
         return;
     }
 

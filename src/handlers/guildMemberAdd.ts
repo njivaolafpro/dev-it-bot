@@ -13,7 +13,7 @@ const handler = async (member: Discord.GuildMember) => {
     const user = await client.users.fetch(member.id);
 
     // 1. Assign the user to non-registered;
-    const roleNonRegistered = member.guild.roles.cache.find(r => r.name === ROLES.NON_REGISTERED);
+    const roleNonRegistered = member.guild.roles.cache.find(r => r.name === ROLES.nonRegistered.name);
     if (!roleNonRegistered) return;
     await member.guild.members.addRole({ user: member, role: roleNonRegistered })
 

@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "npm run start",
-            "name": "Run start",
+            "command": "npm run build-and-start",
+            "name": "Run build and start",
             "request": "launch",
             "type": "node-terminal"
         },
