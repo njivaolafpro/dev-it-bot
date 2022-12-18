@@ -20,15 +20,20 @@ export default {
             return;
         }
 
+        const emojis = PICKABLE_ROLES.map(r=> r.emojiRequirement);
+
+        const message = [...PICKABLE_ROLES].map(e=> `${e.emojiRequirement} ${e.name}`).join(' | ');
 
         const embed = new EmbedBuilder()
             .setColor("Green")
             .setDescription(`Système de role-picking`)
             .addFields(
-                { name: "Message", value: `Go go go cliquer sur les réactions avec lequelles vous pouvez avoir votre rôle :)` },
-            )
+                { name: "Prenez vos rôles", value: message },
+            );
+
         const sentMessage = await channel.send({ embeds: [embed] });
-        PICKABLE_ROLES.forEach(r=> sentMessage.react(r.emojiRequirement));
+
+        emojis.forEach(e=> sentMessage.react(e));
         
     }
 }
