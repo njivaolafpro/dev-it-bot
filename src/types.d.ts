@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, CommandInteraction, Interaction, Collection, PermissionResolvable, Message, AutocompleteInteraction } from "discord.js"
+import { SlashCommandBuilder, CommandInteraction, Interaction, Collection, PermissionResolvable, Message } from "discord.js"
 
 
 export interface Command {
@@ -26,8 +26,6 @@ declare global {
             TOKEN: string,
             CLIENT_ID: string,
             PREFIX: string,
-            MONGO_URI: string,
-            MONGO_DATABASE_NAME: string
         }
     }
 }

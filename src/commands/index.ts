@@ -1,8 +1,8 @@
-import ping from "./ping";
+import announce from "./announce";
 
 const getCommands = () => {
     return [
-        ping
+        announce
     ]
 }
 
