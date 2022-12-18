@@ -1,6 +1,10 @@
 const EMOJIS = {
     jLetter: '🇯',
+    cLetter: '🇨',
     spiderWeb: '🕸️',
+    redRound: '🔴',
+    orangeRound: '🟠',
+    plus: '➕',
 }
 
 const CHANNEL_IDS = {
@@ -16,11 +20,18 @@ const ROLES = {
     // LANGUAGES:
     javascript: { name: 'javascript', emojiRequirement: EMOJIS.jLetter },
     html: { name: 'html', emojiRequirement: EMOJIS.spiderWeb },
+    java: { name: 'java', emojiRequirement: EMOJIS.redRound },
+    c: { name: 'C', emojiRequirement: EMOJIS.cLetter },
+    cPlusPlus: { name: 'C++', emojiRequirement: EMOJIS.plus },
+
 };
 
 const PICKABLE_ROLES = [
     ROLES.javascript,
     ROLES.html,
+    ROLES.java,
+    ROLES.c,
+    ROLES.cPlusPlus,
 ]
 
 const MAIN_MESSAGE = {
