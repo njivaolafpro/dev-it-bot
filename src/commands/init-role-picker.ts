@@ -22,7 +22,7 @@ export default {
 
         const emojis = PICKABLE_ROLES.map(r => r.emojiRequirement);
 
-        const message = [...PICKABLE_ROLES].map(e => `${e.emojiRequirement} ${e.name}`).join(' | ');
+        const message = [...PICKABLE_ROLES].map(e => `${e.emojiRequirement} ${e.name}`).join('   |   ');
 
         const embed = new EmbedBuilder()
             .setColor("Green")
