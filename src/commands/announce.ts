@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits } from 'discord.js';
+import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits, TextBasedChannel } from 'discord.js';
 
 export default {
     data: new SlashCommandBuilder()
@@ -14,10 +14,10 @@ export default {
                 .setDescription("Describe your announcement.")
                 .setRequired(true)
         )
-        .addChannelOption(option => 
+        .addChannelOption(option =>
             option.setName('channel')
-            .setDescription('Channel to echo to.')
-            .setRequired(true)
+                .setDescription('Channel to echo to.')
+                .setRequired(true)
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
@@ -25,10 +25,17 @@ export default {
         const { options, member, client } = interaction;
         const title = options.get("title")?.value as string | undefined;
         const message = options.get("message")?.value as string | undefined;
-        const channel = options.get("channel")?.value as string | undefined;
-        console.log('ANNOUNCING IN CHANNEL ->', channel);
-        if (!title || !message) {
+        const channelId = options.get("channel")?.value as string | undefined;
+
+        if (!title || !message || !channelId) {
+            await interaction.reply({ content: 'Please make sure that all parameters are sent!', ephemeral: true });
             console.warn('Missing data');
+            return;
+        }
+
+        const channel = (await client.channels.fetch(channelId)) as TextBasedChannel | null;
+        if (!channel) {
+            await interaction.reply({ content: 'That channel does not exist!', ephemeral: true });
             return;
         }
 
@@ -39,8 +46,6 @@ export default {
                 { name: "Titre", value: title },
                 { name: "Message", value: message },
             )
-
-
-        await interaction.reply('Salut salut je suis la première commande du Dev-It-Bot full typescript :) !');
+        await channel.send({ embeds: [embed] });
     }
 }
