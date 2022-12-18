@@ -2,7 +2,7 @@ import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsB
 
 export default {
     data: new SlashCommandBuilder()
-        .setName("announceIt")
+        .setName("announce")
         .setDescription("Announce something.")
         .addStringOption(option =>
             option.setName("title")
