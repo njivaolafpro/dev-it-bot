@@ -5,9 +5,11 @@ const EMOJIS = {
     redRound: '🔴',
     orangeRound: '🟠',
     blueRound: '🔵',
-    plus: '➕',
+    highRight: '↗️',
     violetHeart: '💜',
     whale2: '🐋',
+    snake: '🐍',
+    camera: '📷',
 }
 
 const CHANNEL_IDS = {
@@ -26,24 +28,25 @@ const ROLES = {
     html: { name: 'Html', emojiRequirement: EMOJIS.spiderWeb },
     java: { name: 'Java', emojiRequirement: EMOJIS.redRound },
     c: { name: 'C', emojiRequirement: EMOJIS.cLetter },
-    cPlusPlus: { name: 'C++', emojiRequirement: EMOJIS.plus },
+    cPlusPlus: { name: 'C++', emojiRequirement: EMOJIS.highRight },
     php: { name: 'Php', emojiRequirement: EMOJIS.violetHeart },
     mySql: { name: 'MySql', emojiRequirement: EMOJIS.whale2 },
-    // Design
-    // Go
-    // C#
+    python: { name: 'Python', emojiRequirement: EMOJIS.snake },
+    gfx: { name: 'Gfx', emojiRequirement: EMOJIS.camera },
 
 };
 
 const PICKABLE_ROLES = [
     ROLES.javascript,
     ROLES.typescript,
-    ROLES.html,
     ROLES.java,
     ROLES.c,
     ROLES.cPlusPlus,
     ROLES.php,
+    ROLES.python,
     ROLES.mySql,
+    ROLES.html,
+    ROLES.gfx,
 ]
 
 const MAIN_MESSAGE = {
