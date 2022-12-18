@@ -11,7 +11,7 @@ export default {
 
     async execute(interaction: CommandInteraction) {
         const { options, member, client } = interaction;
-        
+
         const channelId = ROLE_CHANNEL_ID;
 
         const channel = (await client.channels.fetch(channelId)) as TextBasedChannel | null;
@@ -20,9 +20,9 @@ export default {
             return;
         }
 
-        const emojis = PICKABLE_ROLES.map(r=> r.emojiRequirement);
+        const emojis = PICKABLE_ROLES.map(r => r.emojiRequirement);
 
-        const message = [...PICKABLE_ROLES].map(e=> `${e.emojiRequirement} ${e.name}`).join(' | ');
+        const message = [...PICKABLE_ROLES].map(e => `${e.emojiRequirement} ${e.name}`).join(' | ');
 
         const embed = new EmbedBuilder()
             .setColor("Green")
@@ -33,7 +33,8 @@ export default {
 
         const sentMessage = await channel.send({ embeds: [embed] });
 
-        emojis.forEach(e=> sentMessage.react(e));
-        
+        emojis.forEach(e => sentMessage.react(e));
+        await interaction.reply({ content: 'done initialization of role picker' })
+        return;
     }
 }

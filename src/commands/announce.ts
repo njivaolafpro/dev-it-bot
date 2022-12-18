@@ -47,5 +47,7 @@ export default {
                 { name: "Message", value: message },
             )
         await channel.send({ embeds: [embed] });
+        await interaction.reply({ content: 'done announcement'});
+        return;
     }
 }
