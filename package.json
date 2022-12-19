@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start": "node dist/bin/deploy-commands.js && node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --collectCoverage"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/njivaolafpro/dev-it-bot#readme",
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
     "@tsconfig/node18": "^1.0.1",
     "eslint": "^8.29.0",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.9.3"
   },
   "dependencies": {
