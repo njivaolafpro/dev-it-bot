@@ -5,7 +5,7 @@ const EMOJIS = {
     RULES_ACCEPTATION: '✅',
 };
 
-const POST_REACTION_DM_MESSAGE = `Merci d'avoir accepté les conditions d'accès au serveur.`;
+const POST_REACTION_DM_MESSAGE = `:tada: Merci d'avoir accepté les conditions d'accès au serveur. :tada: Vous avez maintenant accès aux channels ;)`;
 
 
 const postReactInRules = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser) => {
