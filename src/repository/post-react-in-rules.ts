@@ -2,7 +2,7 @@ import * as Discord from 'discord.js';
 import { ROLES } from "../common";
 
 const EMOJIS = {
-    RULES_ACCEPTATION: 'white_check_mark',
+    RULES_ACCEPTATION: '✅',
 };
 
 const POST_REACTION_DM_MESSAGE = `Merci d'avoir accepté les conditions d'accès au serveur.`;
