@@ -18,11 +18,10 @@ export default {
 
     async execute(interaction: CommandInteraction) {
         const { options, guild } = interaction;
-        const title = options.get("title")?.value as string | undefined;
         const message = options.get("message")?.value as string | undefined;
         const roleid = options.get("roleid")?.value as string | undefined;
 
-        if (!title || !message || !roleid) {
+        if (!message || !roleid) {
             await interaction.reply({ content: 'Please make sure that all parameters are sent!', ephemeral: true });
             console.warn('Missing data');
             return;
