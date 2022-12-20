@@ -3,20 +3,16 @@ import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsB
 export default {
     data: new SlashCommandBuilder()
         .setName("announce-in-dm")
-        .setDescription("Announce in direct message.")
-        .addStringOption(option =>
-            option.setName("title")
-                .setDescription("Name your announcement.")
-                .setRequired(true)
-        )
+        .setDescription("Announce in direct message to specified roles.")
         .addStringOption(option =>
             option.setName("message")
-                .setDescription("Describe your announcement.")
+                .setDescription("Message of your DM announcement.")
                 .setRequired(true)
         )
         .addRoleOption(option =>
             option.setName("roleid")
-                .setDescription("Describe your announcement.")
+                .setDescription("The role of the target")
+                .setRequired(true)
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 
@@ -36,26 +32,15 @@ export default {
         const allMembers = await guild?.members.fetch();
         const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.id === roleid));
 
-        const membersArr = membersFound?.map(m=>m);
-        if (!membersArr){
+        const membersArr = membersFound?.map(m => m);
+        if (!membersArr) {
             await interaction.reply({ content: 'no users found for that role' });
             return;
         }
-        const embed = new EmbedBuilder()
-        .setColor("Green")
-        // .setDescription(`Annonce de ${member}`)
-        .addFields(
-            { name: "Titre", value: title },
-            { name: "Message", value: message },
-        )
 
-        membersArr.map(member=> {
-            member.send(message);
-        })
-        console.log('found members ->', membersFound?.map(m=>m).length);
-       
+        await Promise.all(membersArr.map((m) => m.send(message)));
 
-        await interaction.reply({ content: 'done announcement' });
+        await interaction.reply({ content: 'sent message to:' + membersArr?.length });
         return;
     }
 }
