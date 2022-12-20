@@ -10,14 +10,15 @@ import { generateRandom } from './generate-random';
  */
 
 describe('generation de random number', ()=>{
-    it('should generate a random number between 0 and 10', () => { // TEST CASE
+    it('should generate a random number between 0 and 10', () => {
         const result = generateRandom(10);
         console.log('result:', result)
         expect(result).toBeLessThan(11);
+        expect(result).toBeGreaterThanOrEqual(0);
     });
 
     it('should be a number', () => {  // TEST CASE
         const result = generateRandom(10);
-        expect(Number.isInteger(result)).toBe(true);    // 1. FAIL 
+        expect(Number.isInteger(result)).toBe(true);
     });
 });
