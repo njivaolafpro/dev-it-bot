@@ -15,7 +15,7 @@ export default {
                 .setRequired(true)
         )
         .addRoleOption(option =>
-            option.setName("rolename")
+            option.setName("roleid")
                 .setDescription("Describe your announcement.")
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
@@ -24,17 +24,17 @@ export default {
         const { options, guild } = interaction;
         const title = options.get("title")?.value as string | undefined;
         const message = options.get("message")?.value as string | undefined;
-        const rolename = options.get("rolename")?.value as string | undefined;
+        const roleid = options.get("roleid")?.value as string | undefined;
 
-        if (!title || !message || !rolename) {
+        if (!title || !message || !roleid) {
             await interaction.reply({ content: 'Please make sure that all parameters are sent!', ephemeral: true });
             console.warn('Missing data');
             return;
         }
 
-        console.log('we are checking for role ->', { rolename });
+        console.log('we are checking for role ->', { roleid });
         const allMembers = await guild?.members.fetch();
-        const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.name === rolename));
+        const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.id === roleid));
         console.log('found members ->', membersFound);
         const embed = new EmbedBuilder()
             .setColor("Green")
