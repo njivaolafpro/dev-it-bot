@@ -2,7 +2,7 @@ import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsB
 
 export default {
     data: new SlashCommandBuilder()
-        .setName("announce-dm")
+        .setName("announceDm")
         .setDescription("Announce in direct message.")
         .addStringOption(option =>
             option.setName("title")
