@@ -10,6 +10,7 @@ const EMOJIS = {
     whale2: '🐋',
     snake: '🐍',
     camera: '📷',
+    greenCheck: '✅',
 }
 
 const CHANNEL_IDS = {
@@ -22,6 +23,9 @@ const CHANNEL_IDS = {
 const ROLES = {
     nonRegistered: { name: 'nouveau-membre🐣'},
     member: { name: 'membre vérifié' },
+
+    // Enthusiasts:
+    workshopEnthusiast: { name: 'atelier-enthousiaste', emojiRequirement:  EMOJIS.greenCheck},
 
     // LANGUAGES:
     javascript: { name: 'Javascript', emojiRequirement: EMOJIS.jLetter },
@@ -48,11 +52,16 @@ const PICKABLE_ROLES = [
     ROLES.mySql,
     ROLES.html,
     ROLES.gfx,
+];
+
+const ENTHUSIAST_ROLES = [
+    ROLES.workshopEnthusiast,
 ]
 
 const MAIN_MESSAGE = {
     RULE_MESSAGE_ID: '1043488446796283915',
-    ROLE_PICKER_MESSAGE_ID: '1054148316914532364'
+    ROLE_PICKER_MESSAGE_ID: '1054148316914532364',
+    WORKSHOP_ENTHUSIAST_PICKER_MESSAGE_ID: '1054866105417609266',
 }
 
-export { CHANNEL_IDS, ROLES, MAIN_MESSAGE, PICKABLE_ROLES }
+export { CHANNEL_IDS, ROLES, MAIN_MESSAGE, PICKABLE_ROLES, ENTHUSIAST_ROLES }

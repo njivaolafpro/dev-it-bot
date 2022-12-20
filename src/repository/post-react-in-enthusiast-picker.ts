@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js';
-import { PICKABLE_ROLES } from "../common";
+import { ENTHUSIAST_ROLES } from "../common";
 
-const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser, isAddingRole: boolean) => {
+const postReactInEnthusiastPicker = async (reaction: Discord.MessageReaction | Discord.PartialMessageReaction, user: Discord.User | Discord.PartialUser, isAddingRole: boolean) => {
     console.log('post reacting in rules');
     if (user.bot) return;   // GUARD
     if (!reaction.message.guild) {
@@ -10,7 +10,7 @@ const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord
     const emojiName = reaction.emoji.name;
     console.log('reaction in RULES -> ', { emojiName });
 
-    const foundPickedRole = PICKABLE_ROLES.find(r => r.emojiRequirement === emojiName);
+    const foundPickedRole = ENTHUSIAST_ROLES.find(r => r.emojiRequirement === emojiName);
 
     if (!foundPickedRole) {
         console.warn('picked role is not found, emoji used ->', emojiName);
@@ -31,11 +31,12 @@ const postReactInRolePicker = async (reaction: Discord.MessageReaction | Discord
         return;
     }
     if (isAddingRole) {
-        await guild.members.addRole({ user: member, role: selectedRole });
+        await guild.members.addRole({ user: member, role: selectedRole })
         return;
     }
+
     await guild.members.removeRole({ user: member, role: selectedRole })
 
 }
 
-export default postReactInRolePicker;
+export default postReactInEnthusiastPicker;

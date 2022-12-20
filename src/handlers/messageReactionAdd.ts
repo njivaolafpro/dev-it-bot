@@ -1,6 +1,7 @@
 
 import * as Discord from 'discord.js';
 import { MAIN_MESSAGE } from '../common';
+import postReactInEnthusiastPicker from '../repository/post-react-in-enthusiast-picker';
 import postReactInRolePicker from '../repository/post-react-in-role-picker';
 import postReactInRules from '../repository/post-react-in-rules';
 
@@ -30,6 +31,14 @@ const handler = async (reaction: Discord.MessageReaction | Discord.PartialMessag
         await postReactInRolePicker(reaction, user, true);
         return;
     }
+
+
+    if (reaction.message.id === MAIN_MESSAGE.WORKSHOP_ENTHUSIAST_PICKER_MESSAGE_ID){
+        await postReactInEnthusiastPicker(reaction, user, true);
+        return;
+    }
+
+
 
     console.log('unrecognized reaction rule')   // todo remove that afterwards
 
