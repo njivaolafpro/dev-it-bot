@@ -35,14 +35,25 @@ export default {
         console.log('we are checking for role ->', { roleid });
         const allMembers = await guild?.members.fetch();
         const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.id === roleid));
-        console.log('found members ->', membersFound?.map(m=>m).length);
+
+        const membersArr = membersFound?.map(m=>m);
+        if (!membersArr){
+            await interaction.reply({ content: 'no users found for that role' });
+            return;
+        }
         const embed = new EmbedBuilder()
-            .setColor("Green")
-            // .setDescription(`Annonce de ${member}`)
-            .addFields(
-                { name: "Titre", value: title },
-                { name: "Message", value: message },
-            )
+        .setColor("Green")
+        // .setDescription(`Annonce de ${member}`)
+        .addFields(
+            { name: "Titre", value: title },
+            { name: "Message", value: message },
+        )
+
+        membersArr.map(member=> {
+            member.send(message);
+        })
+        console.log('found members ->', membersFound?.map(m=>m).length);
+       
 
         await interaction.reply({ content: 'done announcement' });
         return;
