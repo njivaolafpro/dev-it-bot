@@ -35,7 +35,7 @@ export default {
         console.log('we are checking for role ->', { roleid });
         const allMembers = await guild?.members.fetch();
         const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.id === roleid));
-        console.log('found members ->', membersFound);
+        console.log('found members ->', membersFound?.map(m=>m).length);
         const embed = new EmbedBuilder()
             .setColor("Green")
             // .setDescription(`Annonce de ${member}`)
