@@ -1,7 +1,5 @@
 import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, PermissionFlagsBits, TextBasedChannel } from 'discord.js';
-import { PICKABLE_ROLES } from '../common';
-
-const ROLE_CHANNEL_ID = '1047640961901154304';
+import { PICKABLE_ROLES, CHANNEL_IDS } from '../common';
 
 export default {
     data: new SlashCommandBuilder()
@@ -12,7 +10,7 @@ export default {
     async execute(interaction: CommandInteraction) {
         const { options, member, client } = interaction;
 
-        const channelId = ROLE_CHANNEL_ID;
+        const channelId = CHANNEL_IDS.ROLES;
 
         const channel = (await client.channels.fetch(channelId)) as TextBasedChannel | null;
         if (!channel) {
