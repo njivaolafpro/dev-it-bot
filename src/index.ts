@@ -85,7 +85,14 @@ client.on(Events.MessageCreate, async (message) => {
 		}
 		const onlyMe = allMembers.find(m => m.id === authorId);
 		const myRoleNames = onlyMe?.roles.cache.map(r=> r.name);
-		console.log('my role names:', myRoleNames)
+		console.log('my role names:', myRoleNames) 
+
+		const roleToReturn = ['Javascript', 'Typescript', 'CPlusPlus'];
+		const filteredPermis = myRoleNames?.filter(roleName=>{ 
+			return roleToReturn.includes(roleName);
+		});
+
+		console.log('FILTERED ROLES',filteredPermis)
 	}
 	return;
 })
