@@ -13,7 +13,7 @@ const client = new Client({
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessageReactions,
-	] , partials: [Partials.Channel, Partials.Message, Partials.Reaction]
+	], partials: [Partials.Channel, Partials.Message, Partials.Reaction]
 });
 const commandCollection = new Collection();
 Object.assign(client, { commands: commandCollection });
@@ -73,11 +73,18 @@ const messageReactionRemoveHandler = messageReactionRemove.build(client);
 client.on(Events.MessageReactionAdd, messageReactionAddHandler);
 client.on(Events.MessageReactionRemove, messageReactionRemoveHandler);
 
-client.on(Events.MessageCreate, async(message)=>{
-	/*const author = message.author;
-	const authorId = author.id;*/
+client.on(Events.MessageCreate, async (message) => {
+	const author = message.author;
+	const authorId = author.id;
 
-	const onlyMe = await message.guild?.members.fetchMe();
-	console.log('only my roles', onlyMe?.roles);
+	if (message.content === '!permis') {
+		const allMembers = await message.guild?.members.fetch();
+		if (!allMembers) {
+			console.warn('No members found in my serveur');
+			return;
+		}
+		const onlyMe = allMembers.find(m => m.id === authorId);
+		console.log('roles of sender:', onlyMe?.roles)
+	}
 	return;
 })
