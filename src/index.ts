@@ -72,3 +72,12 @@ const messageReactionRemoveHandler = messageReactionRemove.build(client);
 
 client.on(Events.MessageReactionAdd, messageReactionAddHandler);
 client.on(Events.MessageReactionRemove, messageReactionRemoveHandler);
+
+client.on(Events.MessageCreate, async(message)=>{
+	/*const author = message.author;
+	const authorId = author.id;*/
+
+	const onlyMe = await message.guild?.members.fetchMe();
+	console.log('only my roles', onlyMe?.roles);
+	return;
+})
