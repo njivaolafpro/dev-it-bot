@@ -84,7 +84,8 @@ client.on(Events.MessageCreate, async (message) => {
 			return;
 		}
 		const onlyMe = allMembers.find(m => m.id === authorId);
-		console.log('roles of sender:', onlyMe?.roles)
+		const myRoleNames = onlyMe?.roles.cache.map(r=> r.name);
+		console.log('my role names:', myRoleNames)
 	}
 	return;
 })
