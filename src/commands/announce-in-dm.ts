@@ -37,9 +37,12 @@ export default {
             return;
         }
 
-        await Promise.all(membersArr.map((m) => m.send(message)));
+        const result = await Promise.allSettled(membersArr.map((m) => m.send(message)));
 
-        await interaction.reply({ content: 'sent message to:' + membersArr?.length });
+        const failedCount = result.filter(r=> r.status === 'rejected').length;
+        const successCount = result.filter(r=> r.status === 'fulfilled').length;
+        const countMessage = JSON.stringify({ failedCount, successCount});
+        await interaction.reply({ content: 'sent message to:' + membersArr?.length + '💡 Report: ' + countMessage });
         return;
     }
 }
