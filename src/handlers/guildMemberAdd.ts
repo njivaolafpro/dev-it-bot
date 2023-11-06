@@ -17,14 +17,13 @@ const handler = async (member: Discord.GuildMember) => {
     if (!roleNonRegistered) return;
     await member.guild.members.addRole({ user: member, role: roleNonRegistered })
 
-
     // 2. Message sur arrivée
     const arriveeChannelID = CHANNEL_IDS.ARRIVEE;
     const channel:any = await client.channels.cache.get(arriveeChannelID);
     const embed = new EmbedBuilder()
         .setTitle(`Bienvenue sur Dev-It-Out`)
         .setColor(0xff0000)
-        .setDescription(`${member.displayName}, toute l'équipe te souhaite la bienvenue ✨`)
+        .setDescription(`${member.displayName}, toute l'équipe te souhaite la bienvenue ✨ Pour avoir accès aux channels, merci de faire un petit :white_check_mark: sur le channel https://discord.com/channels/1042049123731378206/1042056892047962124 afin d'avoir le rôle membre_vérifié`)
         .setFooter({ text: `N'oubliez pas de respecter les règles du serveur Discord.` })
         .setThumbnail(user.displayAvatarURL());
 
