@@ -1,5 +1,4 @@
 const { Colors, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-const Suggestion = require("../../../handlers/functions/events/Suggestions");
 const UUID = require("../../../handlers/functions/uuidGenerator");
 
 module.exports = {

@@ -4,6 +4,8 @@ module.exports = {
 	name: 'guildMemberAdd',
 	once: false,
 execute: async (member, client, con) => {
+    await member.roles.add('1050551297583091744');
+
     await SimpleWelcomeMessages();
     await WelcomeMessages();
 
@@ -20,7 +22,7 @@ execute: async (member, client, con) => {
     }
 
     async function WelcomeMessages() {
-        const channel = member.guild.channels.cache.get('1303463541638168596');
+        const channel = member.guild.channels.cache.get('1042049125543321640');
         if(!channel) return;
 
         channel.send({

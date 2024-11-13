@@ -19,12 +19,12 @@ execute: async (client, interaction, args, con) => {
     con.query(`SELECT * FROM reputations WHERE userID = '${target.id}'`, function(err, result) {
         if(!result[0]) {
             con.query(`INSERT INTO reputations (userID, points) VALUES ('${target.id}', '1')`, function(err, result) {
-                return interaction.reply({ content: `${interaction.user} vient de remercier ${target} **(1)** !` });
+                return interaction.reply({ content: `${target} vient de gagner +1 point. Merci pour votre aide ! **(1)**` });
             })
         } else {
             let points = Number(result[0].points);
             con.query(`UPDATE reputations SET points = '${Math.floor(points + 1)}' WHERE userID ='${target.id}'`, function(err, result) {
-                return interaction.reply({ content: `${interaction.user} vient de remercier ${target} **(${Math.floor(points + 1)})** !` });
+                return interaction.reply({ content: `${target} vient de gagner +1 point. Merci pour votre aide ! **(${Math.floor(points + 1)})**` });
             })
         }
     })
