@@ -53,7 +53,7 @@ async function load (client, connection) {
 
     app.get('/', require('./routes/main'));
     
-    app.listen(90, () => console.log(`[WEB] `.bold.blue + `Web server has been started.`.bold.white + ` (http://localhost:90/)`.bold.blue ));
+    app.listen(3000, () => console.log(`[WEB] `.bold.blue + `Web server has been started.`.bold.white + ` (http://localhost:3000/)`.bold.blue ));
 }
 
 module.exports = {

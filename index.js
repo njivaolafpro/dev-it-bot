@@ -30,12 +30,9 @@ client.commands = new Collection();
 
 const connection = mysql.createConnection({
     host: process.env.HOST,
-    user: process.env.USER,
+    user: process.env.DB_USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
-    port: process.env.PORT,
-    keepAlive: true, // Active la connexion persistante
-    connectTimeout: 10000
 })
 
 client.on('ready', async () => {
