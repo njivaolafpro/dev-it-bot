@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:9.1
+    container_name: mysql-db-bot
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "randomroot1234"
+      MYSQL_DATABASE: devitoutdb
+      MYSQL_PASSWORD: "randomuser1234"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db # Connects to the MySQL service name
+      PMA_USER: root
+      PMA_PASSWORD: "randomroot1234"
+    ports:
+      - "8080:80" # Access phpMyAdmin at http://localhost:8080
+    networks:
+      - app_network
+
+networks:
+  app_network: # Custom network to allow communication with other services
+    driver: bridge
+
+volumes:
+  db_data:
