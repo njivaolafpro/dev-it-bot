@@ -1,23 +1,32 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
+
 
 module.exports = {
     name: "ping-dm-by-role",
-    data: new SlashCommandBuilder()
-        .setName("ping-dm-by-role")
-        .setDescription("Announce in direct message to specified roles.")
-        .addStringOption(option =>
-            option.setName("message")
-                .setDescription("Message of your DM announcement.")
-                .setRequired(true)
-        )
-        .addRoleOption(option =>
-            option.setName("roleid")
-                .setDescription("The role of the target")
-                .setRequired(true)
-        )
-        .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
+    description: "Announce in direct message to specified roles.",
+    
+    type: ApplicationCommandType.ChatInput,
+    options: [
+        {
+            name: 'message',
+            description: 'Message of your DM announcement.',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+        },
+        {
+            name: 'roleid',
+            description: 'The role of the target',
+            type: ApplicationCommandOptionType.Role,
+            required: true,
+        },
+    ],
 
     async execute(interaction) {
+        if (!interaction.member.permissions.has(PermissionFlagsBits.ManageChannels)) {
+            return interaction.reply({ content: "You do not have the required permissions to use this command.", ephemeral: true });
+        }
+
         const { options, guild } = interaction;
         const message = options.get("message")?.value;
         const roleid = options.get("roleid")?.value;
@@ -28,7 +37,6 @@ module.exports = {
             return;
         }
 
-        console.log('we are checking for role ->', { roleid });
         const allMembers = await guild?.members.fetch();
         const membersFound = allMembers?.filter(m => m.roles.cache.find(r => r.id === roleid));
 
