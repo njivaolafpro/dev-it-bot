@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { PermissionFlagsBits } = require('discord.js');
 const { ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 
 
@@ -22,7 +22,7 @@ module.exports = {
         },
     ],
 
-    async execute(interaction) {
+    execute: async (_client, interaction, _args, _con) => {
         if (!interaction.member.permissions.has(PermissionFlagsBits.ManageChannels)) {
             return interaction.reply({ content: "You do not have the required permissions to use this command.", ephemeral: true });
         }
