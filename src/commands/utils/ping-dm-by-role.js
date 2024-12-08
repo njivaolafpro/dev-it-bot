@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
+    name: "ping-dm-by-role",
     data: new SlashCommandBuilder()
         .setName("ping-dm-by-role")
         .setDescription("Announce in direct message to specified roles.")
