@@ -46,12 +46,14 @@ module.exports = {
             return;
         }
 
+        await interaction.reply({ content: 'Gonna send message to:' + membersArr?.length });
+
         const result = await Promise.allSettled(membersArr.map((m) => m.send(message)));
 
         const failedCount = result.filter(r=> r.status === 'rejected').length;
         const successCount = result.filter(r=> r.status === 'fulfilled').length;
         const countMessage = JSON.stringify({ failedCount, successCount});
-        await interaction.reply({ content: 'sent message to:' + membersArr?.length + '💡 Report: ' + countMessage });
+        await interaction.followUp('Message sent to ' + countMessage + ' users where total users:' + membersArr?.length);
         return;
     }
 }
